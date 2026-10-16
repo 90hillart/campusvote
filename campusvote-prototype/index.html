@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CampusVote student election prototype." />
+  <title>CampusVote | Student Elections</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="CampusVote home">
+      <span class="brand-mark">CV</span>
+      <span>Campus<span class="brand-accent">Vote</span><small>STUDENT ELECTIONS</small></span>
+    </a>
+    <div class="nav-label">WORKSPACE</div>
+    <nav aria-label="Main navigation">
+      <button class="nav-item active" data-view="dashboard"><span>▦</span> Dashboard</button>
+      <button class="nav-item" data-view="ballot"><span>☑</span> Cast your vote</button>
+      <button class="nav-item" data-view="candidates"><span>♙</span> Candidates</button>
+      <button class="nav-item" data-view="results"><span>▥</span> Results preview</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="secure-note"><span class="secure-icon">✓</span><div><strong>Built for trust</strong><small>Prototype environment</small></div></div>
+      <div class="profile"><div class="avatar initials">HW</div><div><strong>Hilary Wekesa</strong><small>Demo student account</small></div><span class="dots">•••</span></div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="mobile-brand"><span class="brand-mark">CV</span> CampusVote</div>
+      <div class="breadcrumb">Student portal <span>/</span> <strong id="breadcrumb-current">Dashboard</strong></div>
+      <div class="top-actions"><span class="status-pill"><i></i> Demo election</span><button class="icon-button" aria-label="Notifications">♧</button></div>
+    </header>
+
+    <section class="view active" id="view-dashboard">
+      <div class="welcome-row"><div><p class="eyebrow">FRIDAY, 16 OCTOBER 2026</p><h1>Your voice. Your campus.</h1><p class="muted">Every vote helps shape the future of your university.</p></div><div class="welcome-badge">🎓 <span>Campus elections<br><strong>2026 / 2027</strong></span></div></div>
+      <div class="hero-card">
+        <div class="hero-copy"><span class="hero-label"><span class="pulse"></span> VOTING IS OPEN</span><h2>Student Leadership<br/>General Elections</h2><p>Choose the leaders who will represent your ideas, your needs, and your campus community.</p><button class="button button-light" data-go="ballot">Go to ballot <span>→</span></button></div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="vote-paper"><div class="paper-top">CAMPUS ELECTIONS</div><div class="paper-line"></div><div class="paper-line short"></div><div class="checkmark">✓</div><div class="paper-line"></div><div class="paper-line short"></div></div><div class="floating-star">✦</div><div class="floating-dot"></div></div>
+      </div>
+
+      <div class="section-heading"><div><h2>Election at a glance</h2><p class="muted">Your participation makes a difference.</p></div><span class="live-label">● LIVE OVERVIEW</span></div>
+      <div class="stats-grid">
+        <article class="stat-card"><div class="stat-icon purple">♙</div><p>Positions</p><strong>4</strong><small>Leadership roles</small></article>
+        <article class="stat-card"><div class="stat-icon blue">♧</div><p>Candidates</p><strong>12</strong><small>Across all positions</small></article>
+        <article class="stat-card"><div class="stat-icon green">✓</div><p>Your progress</p><strong id="progress-stat">0 <em>/ 4</em></strong><small>Positions selected in demo</small></article>
+        <article class="stat-card"><div class="stat-icon orange">◷</div><p>Election closes</p><strong class="date-stat">6:00 PM</strong><small>Demo schedule</small></article>
+      </div>
+
+      <div class="content-grid">
+        <section class="panel election-panel"><div class="panel-heading"><div><h2>Open elections</h2><p class="muted">Elections available in this demo</p></div><span class="tag tag-open">Open</span></div><div class="election-row"><div class="election-symbol">🏛️</div><div class="election-info"><strong>Student Leadership Elections</strong><p>President, Vice President, Secretary, Treasurer</p><div class="progress-track"><span style="width: 38%"></span></div><small>Demo participation indicator</small></div><button class="arrow-button" data-go="ballot" aria-label="Open ballot">→</button></div><div class="panel-footer"><span>Election ID: <strong>DEMO-2026</strong></span><button class="text-button" data-go="candidates">Meet the candidates →</button></div></section>
+        <section class="panel principles"><div class="principle-icon">✦</div><h2>Your vote matters</h2><p>Make an informed choice. Review candidate manifestos before selecting your representatives.</p><div class="principle-line"><span>01</span> Review every candidate</div><div class="principle-line"><span>02</span> Choose based on ideas</div><div class="principle-line"><span>03</span> Confirm your selections</div></section>
+      </div>
+      <p class="disclaimer">Demo only: this prototype does not submit real votes or verify student identity.</p>
+    </section>
+
+    <section class="view" id="view-ballot">
+      <div class="page-heading"><p class="eyebrow">YOUR PARTICIPATION</p><h1>Cast your vote</h1><p class="muted">Select one candidate for each position, then review your ballot.</p></div>
+      <div class="ballot-notice"><span>ⓘ</span><div><strong>Demo ballot</strong><p>Your selections are stored only in this browser session. No real election vote is recorded.</p></div></div>
+      <div id="ballot-positions" class="ballot-positions"></div>
+      <div class="ballot-footer"><span id="selection-count">0 of 4 positions selected</span><button id="review-ballot" class="button button-primary" disabled>Review ballot <span>→</span></button></div>
+    </section>
+
+    <section class="view" id="view-candidates">
+      <div class="page-heading"><p class="eyebrow">MEET YOUR REPRESENTATIVES</p><h1>Candidate directory</h1><p class="muted">Explore candidate profiles and their priorities.</p></div>
+      <div class="filter-row"><label for="position-filter">Filter by position</label><select id="position-filter"><option value="all">All positions</option><option>President</option><option>Vice President</option><option>Secretary</option><option>Treasurer</option></select></div>
+      <div id="candidate-directory" class="candidate-grid"></div>
+    </section>
+
+    <section class="view" id="view-results">
+      <div class="page-heading"><p class="eyebrow">TRANSPARENCY & ACCOUNTABILITY</p><h1>Results preview</h1><p class="muted">A sample layout for results after authorized publication.</p></div>
+      <div class="ballot-notice"><span>🔒</span><div><strong>Results are not official</strong><p>The figures below are illustrative sample data. Real results should be published only after the election closes and results are verified.</p></div></div>
+      <div class="results-grid" id="results-grid"></div>
+    </section>
+
+    <footer class="footer"><span>© 2026 CampusVote</span><span>Prototype • Privacy-first by design</span></footer>
+  </main>
+
+  <dialog id="review-dialog" class="review-dialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Close">×</button></form>
+    <div class="dialog-symbol">✓</div><p class="eyebrow">FINAL REVIEW</p><h2>Review your ballot</h2><p class="muted">Check your selections before confirming the demo ballot.</p>
+    <div id="review-list" class="review-list"></div>
+    <div class="dialog-actions"><button class="button button-secondary" id="edit-ballot">Edit selections</button><button class="button button-primary" id="confirm-ballot">Confirm demo ballot</button></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
